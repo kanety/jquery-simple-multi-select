@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="dist/jquery-simple-multi-select.js"></script>
+</head>
+<body>
+  <h1>Basic Usage</h1>
+  <form>
+    <div id="basic">
+      <div>
+        <select id="basic_src" multiple style="width: 7em; height: 7em;">
+          <option value="option1">option1</option>
+          <option value="option2">option2</option>
+          <option value="option3">option3</option>
+          <option value="option4">option4</option>
+          <option value="option5" disabled>option5</option>
+        </select>
+      </div>
+      <div>
+        <div><button type="button" id="basic_adder">&gt;</button></div>
+        <div><button type="button" id="basic_remover">&lt;</button></div>
+      </div>
+      <div>
+        <select id="basic_dst" multiple style="width: 7em; height: 7em;"></select>
+      </div>
+    </div>
+    <input type="submit" value="submit">
+  </form>
+  <script>
+  $('#basic').simpleMultiSelect({
+    source: '#basic_src',
+    destination: '#basic_dst',
+    adder: '#basic_adder',
+    remover: '#basic_remover'
+  });
+  </script>
+
+  <h1>Set max options</h1>
+  <form>
+    <div id="max">
+      <div>
+        <select id="max_src" multiple style="width: 7em; height: 7em;">
+          <option value="option1">option1</option>
+          <option value="option2">option2</option>
+          <option value="option3">option3</option>
+          <option value="option4">option4</option>
+          <option value="option5">option5</option>
+        </select>
+      </div>
+      <div>
+        <div><button type="button" id="max_adder">&gt;</button></div>
+        <div><button type="button" id="max_remover">&lt;</button></div>
+      </div>
+      <div>
+        <select id="max_dst" multiple style="width: 7em; height: 7em;"></select>
+      </div>
+    </div>
+  </form>
+  <script>
+  $('#max').simpleMultiSelect({
+    source: '#max_src',
+    destination: '#max_dst',
+    adder: '#max_adder',
+    remover: '#max_remover',
+    maxOptions: 2,
+    sortOptions: true
+  });
+  </script>
+
+  <h1>Callbacks</h1>
+  <form>
+    <div id="callback">
+      <div>
+        <select id="callback_src" multiple style="width: 7em; height: 7em;">
+          <option value="option1">option1</option>
+          <option value="option2">option2</option>
+          <option value="option3">option3</option>
+          <option value="option4">option4</option>
+          <option value="option5">option5</option>
+        </select>
+      </div>
+      <div>
+        <div><button type="button" id="callback_adder">&gt;</button></div>
+        <div><button type="button" id="callback_remover">&lt;</button></div>
+      </div>
+      <div>
+        <select id="callback_dst" multiple style="width: 7em; height: 7em;"></select>
+      </div>
+    </div>
+    <div id="callback_message"></div>
+  </form>
+  <script>
+  $('#callback').simpleMultiSelect({
+    source: '#callback_src',
+    destination: '#callback_dst',
+    adder: '#callback_adder',
+    remover: '#callback_remover'
+  }).on('option:added', function(e, $option) {
+    $('#callback_message').append('added: ' + $option.val() + '<br>');
+  }).on('option:removed', function(e, $option) {
+    $('#callback_message').append('removed: ' + $option.val() + '<br>');
+  });
+  </script>
+</body>
+</html>
