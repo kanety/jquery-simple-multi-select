@@ -1,5 +1,6 @@
 {
   "name": "@kanety/jquery-simple-multi-select",
+  "description": "A jquery plugin for multiple select",
   "version": "0.1.0",
   "main": "dist/jquery-simple-multi-select.js",
   "author": "Yoshikazu Kaneta <kaneta@sitebridge.co.jp>",
